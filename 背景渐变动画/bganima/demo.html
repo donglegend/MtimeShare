@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn {
+            width: 200px;
+            height: 80px;
+            margin: 10px auto;
+            /* color: #fff; */
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            background: linear-gradient(180deg, #20a0ff 0%, #4db3ff 50%, #fff 100%);
+            background-size: 100% 200%;
+            background-position: 0 0%;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background-position: 0 70%;
+        }
+
+        .cliptext {
+            margin: 0 auto;
+            width: 500px;
+            line-height: 100px;
+            text-align: center;
+            z-index: 1;
+            font-size: 80px;
+            font-weight: bold;
+            background: linear-gradient(90deg, red 0, orange 15%, yellow 30%, green 45%, teal 60%, blue 75%, purple 90%, purple 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            background-size: 300% 100%;
+            background-position: 0 0;
+            animation: changeColor 2s linear infinite alternate;
+        }
+
+        @keyframes changeColor {
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+
+        .progress {
+            width: 80%;
+            height: 20px;
+            margin: 20px auto;
+            /* background: linear-gradient(90deg, #000 0%, #fff 50%, #000 100%); */
+            background: linear-gradient(90deg, #000 0%, #fff 25%, #000 50%, #fff 75%, #000 100%);
+            border-radius: 20px;
+            background-size: 200% 100%;
+            background-position: 200% 0;
+            animation: pgcolor 3s linear infinite;
+        }
+
+        @keyframes pgcolor {
+            /* 50% {
+                background-position: 100% 0;
+            } */
+            100% {
+                background-position: 0% 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+
+    </div>
+
+    <div class="cliptext">
+        大保健
+    </div>
+
+    <div class="progress">
+    </div>
+</body>
+
+</html>

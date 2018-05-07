@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                                                                                                                                                                                                                        const data = [{
+                                                                                                                                                                                                                            name: 'a',
+                                                                                                                                                                                                                            val: 1
+                                                                                                                                                                                                                        }, {
+                                                                                                                                                                                                                            name: 'b',
+                                                                                                                                                                                                                            val: 2
+                                                                                                                                                                                                                        }]
+
+                                                                                                                                                                                                                        function tmpl(data) {
+                                                                                                                                                                                                                            let html = '<ul>'
+                                                                                                                                                                                                                            for (let i = 0; i < data.length; i++) {
+                                                                                                                                                                                                                                const temp = data[i]
+                                                                                                                                                                                                                                html += '<li>' + temp.name + ' : ' + temp.val + '</li>'
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            html += '</ul>'
+                                                                                                                                                                                                                            return html
+                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                        function tmpl2(data) {
+                                                                                                                                                                                                                            let html = ['<ul>']
+                                                                                                                                                                                                                            for (let i = 0; i < data.length; i++) {
+                                                                                                                                                                                                                                const temp = data[i]
+                                                                                                                                                                                                                                html.push('<li>')
+                                                                                                                                                                                                                                html.push(temp.name)
+                                                                                                                                                                                                                                html.push(' : ')
+                                                                                                                                                                                                                                html.push(temp.val)
+                                                                                                                                                                                                                                html.push('</li>')
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            html.push('</ul>')
+                                                                                                                                                                                                                            return html.join('')
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                        const html = tmpl2(data)
+                                                                                                                                                                                                                        */
+        function tmpl(str, data) {
+            var strip = function (html) {
+                return String(html)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+            let tm = str.replace(/<%=\s*([^%>]+)\s*%>/g, function () {
+                const code = arguments[1]
+                return "' + strip(data." + code + ")"
+            })
+            tm = "return '" + tm
+            const compile = new Function('data', 'strip', tm)
+            return compile(data, strip);
+        }
+        var str = 'Hello, <%= info.name%>';
+        var data = {
+            name: 'Mtime',
+            info: {
+                name: 'sub title'
+            }
+        }
+        console.log(tmpl(str, data))
+    </script>
+</body>
+
+</html>

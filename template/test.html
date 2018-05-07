@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="stage"></div>
+    <script type="text/html" id="Temp">
+        <ul>
+            <%for(var i = 0; i < 10; i++){%>
+                <li>
+                    标题:
+                    <%= name %>; 子标题:
+                        <%= info.name %>
+                </li>
+                <%}%>
+        </ul>
+    </script>
+    <script src="./tmpl.js"></script>
+    <script>
+        const data = {
+            name: 'Mtime',
+            info: {
+                name: 'sub title'
+            }
+        }
+        const str = document.getElementById('Temp').innerHTML.replace(/\n/g, '')
+        const r = tmpl(str, data)
+        document.getElementById('stage').innerHTML = r
+    </script>
+</body>
+
+</html>

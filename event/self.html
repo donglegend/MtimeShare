@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义事件</title>
+</head>
+
+<body>
+    <script>
+        function MyEvent() {
+            this._events = {}
+        }
+        MyEvent.prototype = {
+            on: function (type, handle) {
+                if (!this._events[type]) {
+                    this._events[type] = []
+                }
+                if (handle && typeof handle == 'function') {
+                    this._events[type].push(handle)
+                }
+            },
+            off: function (type, handle) {
+                if (!this._events[type]) {
+                    return;
+                }
+                var index = this._events[type].indexOf(handle)
+                if (index > -1) {
+                    this._events[type].splice(index, 1)
+                }
+            },
+            fire: function (type) {
+                if (!this._events[type]) {
+                    return;
+                }
+                var i = 0,
+                    l = this._events[type].length;
+                for (; i < l; i++) {
+                    this._events[type][i].apply(this, [].slice.call(arguments, 1));
+                }
+            }
+        }
+
+
+        function send3() {
+            alert('send event 3')
+        }
+
+        var myEvent = new MyEvent();
+
+        myEvent.on('send', function () {
+            alert('send event 1')
+        })
+        myEvent.on('send', function () {
+            alert('send event 2')
+        })
+        myEvent.on('send', send3)
+        myEvent.on('receive', function () {
+            alert('receive event')
+        })
+        myEvent.on('end', function () {
+            alert('end event')
+        })
+
+        // myEvent.fire('send')
+        // myEvent.off('send', send3)
+        // myEvent.fire('send')
+    </script>
+</body>
+
+</html>

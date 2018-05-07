@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin: 200px auto;
+            font-size: 30px;
+            /* border: 4px #000 solid; */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="trs">transform</div>
+    <style>
+        .trs::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: -100%;
+            right: -100%;
+            bottom: -100%;
+            background: linear-gradient(45deg, #ffc700 0%, #e91e1e 50%, #6f27b0 100%);
+            background-size: 100% 100%;
+            animation: bgposition 8s infinite linear alternate;
+            z-index: -1;
+        }
+
+        @keyframes bgposition {
+            0% {
+                transform: translate(30%, 30%);
+            }
+            25% {
+                transform: translate(30%, -30%);
+            }
+            50% {
+                transform: translate(-30%, -30%);
+            }
+            75% {
+                transform: translate(-30%, 30%);
+            }
+            100% {
+                transform: translate(30%, 30%);
+            }
+        }
+    </style>
+</body>
+
+</html>

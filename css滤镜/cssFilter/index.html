@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css filter</title>
+    <link rel="stylesheet" href="./index.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="box">
+            <img src="./img/logo.png">
+            <div class="caption">none</div>
+        </div>
+        <div class="box">
+            <img src="./img/logo.png" style="filter: blur(25px);">
+            <div class="caption">blur(25px)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: opacity(25%);">
+            <div class="caption">opacity(25%)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: drop-shadow(16px 16px 20px blue);">
+            <div class="caption">drop-shadow(16px 16px 20px blue)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: saturate(6);">
+            <div class="caption">saturate(6)饱和度</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: contrast(200%);">
+            <div class="caption">contrast(100%)对比度</div>
+        </div>
+
+    </div>
+
+    <div class="stage">
+        <div class="box"><img src="./img/logo.png" style="filter: hue-rotate(90deg);">
+            <div class="caption">hue-rotate(90deg)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: invert(75%);">
+            <div class="caption">invert(75%)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: grayscale(1);">
+            <div class="caption">grayscale(1)</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: brightness(.5);">
+            <div class="caption">brightness(.5)亮度</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: sepia(100%)">
+            <div class="caption">sepia(100%)深褐色</div>
+        </div>
+        <div class="box"><img src="./img/logo.png" style="filter: contrast(0.5) brightness(0.5);">
+            <div class="caption">contrast(175%) brightness(3%)</div>
+        </div>
+
+    </div>
+
+    <div style="margin-left: 320px;">
+        <div class="filter-mix lineblock" id="filterBall">
+            <div class="ball1 ball"></div>
+            <div class="ball2 ball"></div>
+        </div>
+        <div class="lineblock">
+            背景滤镜:
+            <select id="bgSelect">
+                <option value="none">none</option>
+                <option value="blur(6px)">blur(6px)</option>
+                <option value="opacity(25%)">opacity(25%)</option>
+                <option value="drop-shadow(16px 16px 20px blue)">drop-shadow(16px 16px 20px blue)</option>
+                <option value="saturate(6)">saturate(6)</option>
+                <option value="contrast(20)">contrast(20)</option>
+                <option value="hue-rotate(90deg)">hue-rotate(90deg)</option>
+                <option value="invert(75%)">invert(75%)</option>
+                <option value="grayscale(1)">grayscale(1)</option>
+                <option value="brightness(.5)">brightness(.5)</option>
+                <option value="sepia(100%)">sepia(100%)</option>
+            </select>
+        </div>
+        <div class="lineblock">
+            前景滤镜:
+            <select id="fgSelect">
+                <option value="none">none</option>
+                <option value="blur(6px)">blur(6px)</option>
+                <option value="opacity(25%)">opacity(25%)</option>
+                <option value="drop-shadow(16px 16px 20px blue)">drop-shadow(16px 16px 20px blue)</option>
+                <option value="saturate(6)">saturate(6)</option>
+                <option value="contrast(20)">contrast(20)</option>
+                <option value="hue-rotate(90deg)">hue-rotate(90deg)</option>
+                <option value="invert(75%)">invert(75%)</option>
+                <option value="grayscale(1)">grayscale(1)</option>
+                <option value="brightness(.5)">brightness(.5)</option>
+                <option value="sepia(100%)">sepia(100%)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="fire" style="margin: 100px auto;"></div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

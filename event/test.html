@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: auto;
+        }
+
+        #stage {
+            height: 2000px;
+            background: -webkit-linear-gradient(top, #ccc, #f90);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stage">
+
+    </div>
+    <script>
+        // document.addEventListener('touchmove', function (e) {
+        //     e && e.preventDefault()
+        // }, false ? {
+        //     passive: false,
+        //     capture: false
+        // } : false)
+
+        function formatDate(type) {
+            const date = new Date()
+            const year = date.getFullYear()
+            const month = addZero(date.getMonth())
+            const day = addZero(date.getDate())
+            const hour = addZero(date.getHours())
+            const min = addZero(date.getMinutes())
+            const sec = addZero(date.getSeconds())
+            let formatStr = ''
+            switch (type) {
+                case 'yyyy-MM-dd HH:mm:ss':
+                    formatStr = year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec
+                    break
+                case 'yyyy-MM-dd':
+                    formatStr = year + '-' + month + '-' + day
+                    break
+                case 'yyyyMMddHHmmss':
+                    console.log(year, month, day, hour, min, sec)
+                    formatStr = year + month + day + hour + min + sec
+                    console.log(formatStr)
+                    break
+                default:
+                    throw new Error('Not Support Format Type')
+            }
+            return formatStr
+        }
+
+        // 把不足2位的日期前加0
+        function addZero(val) {
+            if (typeof val === 'number') {
+                return val < 10 ? '0' + val : val
+            } else {
+                throw new Error('arguments is not number')
+            }
+        }
+        formatDate('yyyyMMddHHmmss')
+    </script>
+</body>
+
+</html>

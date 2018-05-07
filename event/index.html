@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event share</title>
+    <style>
+        #__bs_notify__ {
+            opacity: 0;
+        }
+
+        #stage {
+            height: 400px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="stage" onclick="console.log(1)"></div>
+    <script>
+        function ff() {
+            console.log(5)
+        }
+        var el = document.querySelector('#stage')
+
+        el.addEventListener('click', function () {
+            console.log('2')
+        }, false)
+        el.onclick = function () {
+            console.log('4')
+        }
+        el.addEventListener('click', function () {
+            console.log('3')
+        }, false)
+        el.addEventListener('click', ff, false)
+        el.addEventListener('click', ff, false)
+
+        var events = {
+            handleEvent: function (e) {
+                switch (e.type) {
+                    case 'touchstart':
+                        this.start(e);
+                        break;
+                    case 'touchmove':
+                        this.move(e);
+                        break;
+                    case 'touchend':
+                        this.end(e);
+                        break;
+                }
+            },
+            start: function (e) {
+                console.log('touch start')
+            },
+            move: function (e) {
+                console.log('touch move')
+                e.preventDefault();
+            },
+            end: function (e) {
+                console.log('touch end')
+            }
+        };
+        el.addEventListener('touchstart', events, false);
+        el.addEventListener('touchmove', events, false);
+        el.addEventListener('touchend', events, false);
+
+        document.addEventListener('touchmove', events, false)
+
+        // var supportsPassive = false;
+        // try {
+        //     var opts = Object.defineProperty({}, 'passive', {
+        //         get: function () {
+        //             supportsPassive = true;
+        //         }
+        //     });
+        //     window.addEventListener("test", null, opts);
+        // } catch (e) {}
+        // elem.addEventListener('touchstart', fn,
+        //     supportsPassive ? {
+        //         passive: true
+        //     } : false);
+    </script>
+</body>
+
+</html>

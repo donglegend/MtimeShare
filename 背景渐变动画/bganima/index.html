@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin: 20px auto;
+            font-size: 30px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #ffc700 0%, #e91e1e 100%);
+            animation: gradientChange 2s infinite alternate;
+        }
+
+        @keyframes gradientChange {
+            100% {
+                background: linear-gradient(90deg, #e91e1e 0%, #6f27b0 100%);
+            }
+        }
+
+        .gradientps {
+            background: linear-gradient(90deg, #ffc700 0%, #e91e1e 50%, #6f27b0 100%);
+            background-size: 200% 100%;
+            animation: bgposition 2s infinite alternate;
+            background-position: 0 0;
+        }
+
+        @keyframes bgposition {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .gradientbs {
+            background: linear-gradient(90deg, #ffc700 0%, #e91e1e 50%, #6f27b0 100%);
+            background-position: 50% 0;
+            animation: bgSize 2s infinite alternate;
+        }
+
+        @keyframes bgSize {
+            0% {
+                background-size: 300% 100%;
+            }
+            100% {
+                background-size: 100% 100%;
+            }
+        }
+
+
+        .normal {
+            background: #ffc700;
+            animation: normalChange 2s infinite alternate;
+        }
+
+        @keyframes normalChange {
+            100% {
+                background: #e91e1e;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="normal">background-color</div>
+    <div class="gradient">background-linear</div>
+    <div class="gradientps">background-position</div>
+    <div class="gradientbs">background-size</div>
+    <div class="trs"></div>
+</body>
+
+</html>
